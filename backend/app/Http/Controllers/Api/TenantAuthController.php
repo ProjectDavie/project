@@ -1,0 +1,62 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Tenant;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+class TenantAuthController extends Controller
+{
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $tenant = Tenant::create([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'tenant_id' => $tenant->id,
+            'password' => Hash::make($request->password),
+            'role' => 'tenant',
+        ]);
+
+        $token = $user->createToken('tenant-token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Tenant registered',
+            'token' => $token,
+        ], 201);
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }
+
+        $token = $user->createToken('tenant-token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Logged in',
+            'token' => $token,
+        ]);
+    }
+}

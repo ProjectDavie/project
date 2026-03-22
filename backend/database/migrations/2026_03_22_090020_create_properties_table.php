@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tenants', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->timestamps();
-        });
+        Schema::create('properties', function (Blueprint $table) {
+    $table->id();
+    $table->string('name');
+    $table->string('location');
+    $table->foreignId('tenant_id')->nullable()->constrained()->cascadeOnDelete();
+    $table->timestamps();
+});
     }
 
     /**
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tenants');
+        Schema::dropIfExists('properties');
     }
 };
