@@ -13,12 +13,8 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Tenant Dashboard</h1>
-      {properties.map(p => (
-        <div key={p.id}>
-          {p.name} - {p.location}
-        </div>
-      ))}
+      <h1>Hello World</h1>
+      <p>Welcome to the dashboard!</p>
     </div>
   );
 }
