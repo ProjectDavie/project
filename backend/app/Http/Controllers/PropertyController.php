@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Property;
+
+class PropertyController extends Controller
+{
+    public function index()
+    {
+        $properties = Property::latest()->get();
+        return view('properties.index', compact('properties'));
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'nullable|string',
+        ]);
+
+        Property::create([
+            'name' => $request->name,
+            'address' => $request->address,
+            'price' => $request->price,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('properties.index')->with('success', 'Property created successfully!');
+    }
+}
