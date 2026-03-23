@@ -22,12 +22,7 @@ class PropertyController extends Controller
             'description' => 'nullable|string',
         ]);
 
-        Property::create([
-            'name' => $request->name,
-            'address' => $request->address,
-            'price' => $request->price,
-            'description' => $request->description,
-        ]);
+        Property::create($request->only(['name', 'address', 'price', 'description']));
 
         return redirect()->route('properties.index')->with('success', 'Property created successfully!');
     }

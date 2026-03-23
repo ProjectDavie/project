@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Landing Page - RentMaster</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dave Properties - Admin Portal</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f2f2f2; color: #333; }
+    .brand { color: #FFD700; font-weight: bold; } /* yellow text */
+    .btn-primary { background-color: #333; border-color: #333; }
+    .btn-primary:hover { background-color: #555; border-color: #555; }
+    .btn-outline-light { color: #333; border-color: #333; }
+    .btn-outline-light:hover { background-color: #333; color: #FFD700; }
+    header { background-color: #777; }
+    footer { background-color: #777; }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-    <!-- Header Section -->
-    <header class="bg-purple-700 text-white py-10">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-4">Welcome to RentMaster Admin Portal</h1>
-            <p class="text-lg max-w-xl mx-auto">
-                Manage all your apartment listings and rentals easily from one dashboard. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur, nisi nisl lacinia orci, ac blandit lorem urna nec metus.
-            </p>
-        </div>
-    </header>
+  <!-- Header -->
+  <header class="py-5 text-center text-light">
+    <div class="container">
+      <h1 class="display-4 mb-3 brand">Dave Properties Admin Portal</h1>
+      <p class="lead mx-auto" style="max-width: 700px;">
+        Manage all your apartment listings and rentals effortlessly. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur, nisi nisl lacinia orci, ac blandit lorem urna nec metus.
+      </p>
+    </div>
+  </header>
 
-    <!-- Buttons Section -->
-    <section class="py-10 bg-white">
-        <div class="container mx-auto flex justify-center gap-6">
-            <a href="{{ route('login') }}" class="bg-purple-700 text-white px-6 py-3 rounded-lg hover:bg-purple-800 transition">Log In</a>
-            <a href="{{ route('register') }}" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition">Register</a>
-        </div>
-    </section>
+  <!-- Buttons -->
+  <section class="py-5 text-center bg-light">
+    <div class="container d-flex justify-content-center gap-3">
+      <a href="{{ route('login') }}" class="btn btn-primary btn-lg">Log In</a>
+      <a href="{{ route('register') }}" class="btn btn-outline-light btn-lg">Register</a>
+    </div>
+  </section>
 
-    <!-- About Us Section -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto text-center max-w-3xl">
-            <h2 class="text-3xl font-bold mb-6">About Our Company</h2>
-            <p class="text-lg mb-4">
-                RentMaster has been helping property managers and landlords streamline their apartment rentals for over 10 years. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-            <p class="text-lg">
-                Admins can easily log in or register to start managing their listings. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet semper leo.
-            </p>
-        </div>
-    </section>
+  <!-- About Us -->
+  <section class="py-5 text-center" style="background-color: #e0e0e0;">
+    <div class="container" style="max-width: 720px;">
+      <h2 class="mb-4 fw-bold brand">About Dave Properties</h2>
+      <p class="mb-3">
+        Dave Properties helps landlords and property managers streamline apartment rentals with ease. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+      <p>
+        Admins can log in or register to start managing their listings. Curabitur sit amet semper leo. Make your property management simple and efficient.
+      </p>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-purple-700 text-white py-6 mt-12 text-center">
-        <p>&copy; 2026 RentMaster. All rights reserved.</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="py-4 text-center text-light">
+    <p class="mb-0">&copy; 2026 Dave Properties. All rights reserved.</p>
+  </footer>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
